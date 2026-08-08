@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس العشرون - المشروع الختامي والتحضير للاختبار النهائي | HTML Master Academy">
+    <title>الدرس العشرون | المشروع الختامي والاختبار النهائي 🎓</title>
+    
+    <!-- CSS الموحد للموقع -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- 🔒 1. سكربت الحماية المباشر (يمنع فتح الصفحة بدون تسجيل الدخول) -->
+    <script type="module" src="../js/auth-guard.js"></script>
+
+    <style>
+        /* تأثير الجراديانت والأناقة للعنوان الرئيسي */
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+            margin-bottom: 10px;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .roadmap-item {
+            background: rgba(0, 0, 0, 0.25);
+            border-right: 4px solid #8b5cf6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .exam-cta-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+            margin: 30px 0;
+        }
+
+        .btn-exam {
+            display: inline-block;
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-exam:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            🚀 HTML Master
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="lesson1.html" class="active">الدروس</a>
+            <a href="../leaderboard.html">🏆 المتصدرون</a>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي">
+                🌙
+            </button>
+            <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+                خروج 🚪
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="badge">🎓 الدرس 20 من 20 (المرحلة الختامية)</span>
+        <h1>المشروع الختامي والاستعداد للشهادة النهائية</h1>
+        <p>مبارك وصولك للدرس الأخير! لقد قطعت شوطاً رائعاً من الأساسيات وحتى أحدث معايير الويب المتقدمة.</p>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="progress-wrapper">
+        <div class="progress-label">
+            <span>تقدمك في الدورة</span>
+            <span class="progress-percent" id="progressPercent">100%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 100%; background: linear-gradient(90deg, #10b981, #8b5cf6);"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="container" style="max-width: 900px; margin: 0 auto; padding: 0 15px;">
+        
+        <!-- SECTION 1: RECAP -->
+        <section class="card slide-up">
+            <span class="badge">✨ حصاد الرحلة</span>
+            <h2>ماذا حققت خلال الـ 19 درساً الماضية؟</h2>
+            <p>أصبحت الآن متقناً لجميع المفاهيم الأساسية والمتقدمة في لغة HTML5:</p>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <h3>🏗️ البنية والدلالات</h3>
+                    <p>فهم أوسمة Semantic HTML وبناء الهيكل الصحيح للمواقع.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>📝 النماذج والبيانات</h3>
+                    <p>احتراف عناصر Forms والتحقق من المدخلات والإدخال المتقدم.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>🖼️ الوسائط والجداول</h3>
+                    <p>التعامل مع الصور، الصوت، الفيديو، والجداول المعقدة.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>⚡ SEO والأداء</h3>
+                    <p>تطبيق أفضل الممارسات، التحميل الكسول، وتحسين نتائج البحث.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: FINAL EXAM CALL TO ACTION -->
+        <section class="exam-cta-card slide-up">
+            <h2>🏆 الاختبار النهائي الشامل (20 سؤالاً)</h2>
+            <p style="font-size: 1.1rem; max-width: 650px; margin: 15px auto; line-height: 1.8;">
+                هذا الاختبار يغطي جميع الدروس الـ 20. عند حصولك على <strong>الدرجة النهائية (20/20)</strong> سيتم إدراج اسمك تلقائياً في <strong>لائحة الشرف والمتصدرين 🏆</strong> وتوثيق إنجازك!
+            </p>
+
+            <a href="final-exam.html" class="btn-exam">
+                🚀 ابدأ الاختبار النهائي الآن
+            </a>
+        </section>
+
+        <!-- NAVIGATION -->
+        <div class="lesson-nav" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <a href="lesson19.html" class="btn btn-secondary">⬅️ الدرس التاسع عشر</a>
+            <a href="../leaderboard.html" class="btn btn-primary" style="background: #8b5cf6;">🏆 عرض لوحة المتصدرين</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3>🚀 HTML Master Academy</h3>
+        <p>تهانينا على إتمام مسار تعلم HTML بالكامل!</p>
+        <p>© 2026 HTML Master Academy</p>
+    </footer>
+
+    <!-- LOGIC MODULE -->
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { app } from "../js/firebase-config.js";
+
+        const auth = getAuth(app);
+
+        // تسجيل الخروج
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "../login.html";
+            });
+        });
+    </script>
+</body>
+</html>

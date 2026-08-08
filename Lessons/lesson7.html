@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس السابع - الجداول في HTML | HTML Master Academy">
+    <title>الدرس السابع | الجداول في HTML</title>
+    
+    <!-- CSS الموحد للموقع -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- 🔒 1. سكربت الحماية المباشر (يمنع فتح الصفحة بدون تسجيل الدخول) -->
+    <script type="module" src="../js/auth-guard.js"></script>
+
+    <!-- تنسيقات وتأثيرات الإضاءة للعنوان والخيارات -->
+    <style>
+        /* تأثير الجراديانت والأناقة للعنوان الرئيسي */
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+            margin-bottom: 10px;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* تحسين شكل بطاقة الأسئلة والخيارات */
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateX(-4px);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: #a855f7;
+            width: 18px;
+            height: 18px;
+        }
+
+        .code-block {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 4px solid #a855f7;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        /* تنسيق جدول المعاينة */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 14px;
+        }
+
+        .custom-table th {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+
+        .custom-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            🚀 HTML Master
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="lesson1.html" class="active">الدروس</a>
+            <a href="../leaderboard.html">🏆 المتصدرون</a>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي">
+                🌙
+            </button>
+            <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+                خروج 🚪
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="badge">📚 الدرس 07 من 20</span>
+        <h1>الجداول في HTML (Tables)</h1>
+        <p>تعلم كيفية إنشاء وتنظيم البيانات في جداول مرتبة باستخدام وسوم الجداول المختلفة في HTML.</p>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="progress-wrapper">
+        <div class="progress-label">
+            <span>تقدمك في الدورة</span>
+            <span class="progress-percent" id="progressPercent">35%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 35%;"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="container" style="max-width: 900px; margin: 0 auto; padding: 0 15px;">
+        
+        <!-- SECTION 1: BASIC TABLE TAGS -->
+        <section class="card slide-up">
+            <span class="badge">📊 الوسوم الأساسية</span>
+            <h2>الهيكل الأساسي للجدول</h2>
+            <p>يتكون الجدول في HTML من وسم رئيسي <code>&lt;table&gt;</code> وتحتوي صفوفاً وأعمدة بداخلها:</p>
+            <ul>
+                <li><code>&lt;table&gt;</code>: الوسم الحاوي للجدول بالكامل.</li>
+                <li><code>&lt;tr&gt;</code>: يمثل الصف (Table Row).</li>
+                <li><code>&lt;th&gt;</code>: خلية رأس الجدول وتظهر عادةً بخط عريض ومُعنون (Table Header).</li>
+                <li><code>&lt;td&gt;</code>: خلية البيانات العادية (Table Data).</li>
+            </ul>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;الاسم&lt;/th&gt;
+    &lt;th&gt;العمر&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;أحمد&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ADVANCED TABLE STRUCTURE & MERGING -->
+        <section class="card slide-up">
+            <span class="badge">⚡ الدمج والهيكلة</span>
+            <h2>الهيكلة المتقدمة ودمج الخلايا</h2>
+            <p>لتنظيم الجداول الكبيرة نستخدم <code>&lt;thead&gt;</code> للرأس، <code>&lt;tbody&gt;</code> لجسم الجدول، و <code>&lt;tfoot&gt;</code> للتذييل.</p>
+            <p>كما يمكنك دمج الخلايا باستخدام الخصائص التالية:</p>
+            <ul>
+                <li><code>colspan</code>: لدمج أكثر من عمود أفقي.</li>
+                <li><code>rowspan</code>: لدمج أكثر من صف رأسي.</li>
+            </ul>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;!-- دمج عمودين --&gt;
+&lt;td colspan="2"&gt;خلية مدمجة على عمودين&lt;/td&gt;
+
+&lt;!-- دمج صفين --&gt;
+&lt;td rowspan="2"&gt;خلية مدمجة على صفين&lt;/td&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DEMO PREVIEW -->
+        <section class="card slide-up">
+            <span class="badge">👁️ المعاينة الحية</span>
+            <h2>معاينة جدول بيانات الطلاب:</h2>
+            <div class="demo-box">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>الطالب</th>
+                            <th>المادة</th>
+                            <th>الدرجة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>محمد</td>
+                            <td>HTML</td>
+                            <td>95%</td>
+                        </tr>
+                        <tr>
+                            <td>سارة</td>
+                            <td>CSS</td>
+                            <td>98%</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">المتوسط العام</td>
+                            <td>96.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 4: QUIZ -->
+        <section class="card quiz slide-up" id="lessonQuiz">
+            <span class="badge">📝 اختبار الدرس السابع</span>
+            <h2>اختبر معرفتك في الجداول</h2>
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question" data-question="1" style="margin-bottom: 20px;">
+                <h3>1. ما الوسم الرئيسي المستخدم لإنشاء جدول في HTML؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> &lt;tab&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="correct"> &lt;table&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> &lt;grid&gt;
+                </label>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question" data-question="2" style="margin-bottom: 20px;">
+                <h3>2. ما الوسم الذي يمثل الصف (Row) داخل الجدول؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="correct"> &lt;tr&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> &lt;td&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> &lt;th&gt;
+                </label>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question" data-question="3" style="margin-bottom: 20px;">
+                <h3>3. ما الفرق بين وسم &lt;th&gt; و وسم &lt;td&gt;؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> &lt;td&gt; لرأس الجدول و &lt;th&gt; للبيانات
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="correct"> &lt;th&gt; لعناوين العناوين والرأس و &lt;td&gt; للبيانات العادية
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> لا يوجد أي فرق بينهما
+                </label>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question" data-question="4" style="margin-bottom: 20px;">
+                <h3>4. الخاصية المستخدمة لدمج أكثر من عمود أفقياً هي:</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> rowspan
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="correct"> colspan
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> merge-cols
+                </label>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question" data-question="5" style="margin-bottom: 20px;">
+                <h3>5. ما الوسم الذي نضع فيه تذييل وسطور الملخص في أسفل الجدول؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> &lt;thead&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="correct"> &lt;tfoot&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> &lt;bottom&gt;
+                </label>
+            </div>
+
+            <button class="btn btn-primary" id="submitQuiz" type="button" style="margin-top: 15px; width: 100%; padding: 12px; font-size: 1.1rem; cursor: pointer;">
+                ✅ تصحيح الاختبار
+            </button>
+
+            <div class="quiz-result" id="quizResult" style="margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1rem;"></div>
+        </section>
+
+        <!-- COMPLETION & NAVIGATION -->
+        <section class="card slide-up">
+            <span class="badge">🏁 نهاية الدرس السابع</span>
+            <h2>رائع جداً! 🎉</h2>
+            <p>أصبحت قادراً على هيكلة البيانات في جداول احترافية. مستعد للدرس الثامن؟</p>
+        </section>
+
+        <div class="lesson-nav" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <a href="lesson6.html" class="btn btn-secondary">⬅️ الدرس السادس</a>
+            <a href="lesson8.html" class="btn btn-primary" id="nextLesson">الدرس الثامن ➜</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3>🚀 HTML Master Academy</h3>
+        <p>تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.</p>
+        <p>© 2026 HTML Master Academy</p>
+    </footer>
+
+    <!-- LOGIC MODULE -->
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { app } from "../js/firebase-config.js";
+
+        const auth = getAuth(app);
+
+        // 1. تسجيل الخروج
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "../login.html";
+            });
+        });
+
+        // 2. تصحيح الأسئلة الـ 5 الخاصة بالدرس السابع
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            let totalQuestions = 5;
+            let score = 0;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption && selectedOption.value === 'correct') {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quizResult');
+            if (score === totalQuestions) {
+                resultDiv.style.color = '#10b981';
+                resultDiv.innerHTML = `🎉 ممتاز! أجبت على جميع الأسئلة صحيحة (${score}/${totalQuestions}). يمكنك الانتقال للدرس التالي!`;
+                
+                // تحديث مؤشر التقدم لـ 35%
+                document.getElementById('progressBar').style.width = '35%';
+                document.getElementById('progressPercent').innerText = '35%';
+            } else {
+                resultDiv.style.color = '#ef4444';
+                resultDiv.innerHTML = `⚠️ حصلت على ${score} من ${totalQuestions}. حاول مرة أخرى للحصول على الدرجة كاملة!`;
+            }
+        });
+    </script>
+
+    <!-- وظيفة زر النسخ -->
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                button.innerText = '✅ تم النسخ!';
+                setTimeout(() => { button.innerText = '📋 نسخ'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

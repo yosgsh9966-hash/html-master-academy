@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس السادس - الصور والوسائط في HTML | HTML Master Academy">
+    <title>الدرس السادس | الصور والوسائط</title>
+    
+    <!-- CSS الموحد للموقع -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- 🔒 1. سكربت الحماية المباشر (يمنع فتح الصفحة بدون تسجيل الدخول) -->
+    <script type="module" src="../js/auth-guard.js"></script>
+
+    <!-- تنسيقات وتأثيرات الإضاءة للعنوان والخيارات -->
+    <style>
+        /* تأثير الجراديانت والأناقة للعنوان الرئيسي */
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+            margin-bottom: 10px;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* تحسين شكل بطاقة الأسئلة والخيارات */
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateX(-4px);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: #a855f7;
+            width: 18px;
+            height: 18px;
+        }
+
+        .code-block {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 4px solid #a855f7;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+
+        .demo-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            🚀 HTML Master
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="lesson1.html" class="active">الدروس</a>
+            <a href="../leaderboard.html">🏆 المتصدرون</a>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي">
+                🌙
+            </button>
+            <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+                خروج 🚪
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="badge">📚 الدرس 06 من 20</span>
+        <h1>الصور والوسائط (Images & Media)</h1>
+        <p>تعلم كيفية إضافة الصور ومقاطع الصوت والفيديو إلى صفحتك لتجميع محتوى تفاعلي وجذاب.</p>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="progress-wrapper">
+        <div class="progress-label">
+            <span>تقدمك في الدورة</span>
+            <span class="progress-percent" id="progressPercent">30%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 30%;"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="container" style="max-width: 900px; margin: 0 auto; padding: 0 15px;">
+        
+        <!-- SECTION 1: IMAGES -->
+        <section class="card slide-up">
+            <span class="badge">🖼️ الوسم &lt;img&gt;</span>
+            <h2>إضافة الصور والخصائص الأساسية</h2>
+            <p>يستخدم الوسم <code>&lt;img&gt;</code> لإدراج صورة، وهو وسم مغلق ذاتياً (Self-closing tag). أهم خصائصه:</p>
+            <ul>
+                <li><code>src</code>: حدد مسار الصورة (رابط خارجي أو ملف محلي).</li>
+                <li><code>alt</code>: النص البديل الذي يظهر في حال فشل تحمّيل الصورة ولأجهزة قراءة الشاشة.</li>
+                <li><code>width</code> / <code>height</code>: لتحديد أبعاد الصورة.</li>
+            </ul>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;img src="logo.png" alt="شعار الموقع" width="200" height="100"&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 2: AUDIO & VIDEO -->
+        <section class="card slide-up">
+            <span class="badge">🎬 الصوت والفيديو</span>
+            <h2>إدراج عناصر الصوت والفيديو</h2>
+            <p>يمكن إضافة مشغل وسائط باستخدام الوسوم <code>&lt;audio&gt;</code> و <code>&lt;video&gt;</code>. نستخدم خاصية <code>controls</code> لإظهار أزرار التشغيل والتحكم.</p>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;!-- إضافة ملف صوتي --&gt;
+&lt;audio src="audio.mp3" controls&gt;&lt;/audio&gt;
+
+&lt;!-- إضافة مقطع فيديو --&gt;
+&lt;video src="video.mp4" width="320" height="240" controls&gt;&lt;/video&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DEMO PREVIEW -->
+        <section class="card slide-up">
+            <span class="badge">👁️ المعاينة الحية</span>
+            <h2>معاينة عنصر الصورة:</h2>
+            <div class="demo-box">
+                <p>صورة توضيحية تم تحميلها بواسطة <code>&lt;img&gt;</code>:</p>
+                <img src="https://via.placeholder.com/600x200/a855f7/ffffff?text=HTML5+Media+Demo" alt="معاينة الصور">
+            </div>
+        </section>
+
+        <!-- SECTION 4: QUIZ -->
+        <section class="card quiz slide-up" id="lessonQuiz">
+            <span class="badge">📝 اختبار الدرس السادس</span>
+            <h2>اختبر معرفتك في الوسائط والصور</h2>
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question" data-question="1" style="margin-bottom: 20px;">
+                <h3>1. ما الوسم المستخدم لإدراج صورة في صفحة HTML؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> &lt;image&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="correct"> &lt;img&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> &lt;pic&gt;
+                </label>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question" data-question="2" style="margin-bottom: 20px;">
+                <h3>2. ما الخاصية المستخدمة لتحديد النص البديل للصورة؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="correct"> alt
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> title
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> src
+                </label>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question" data-question="3" style="margin-bottom: 20px;">
+                <h3>3. ما الخاصية الأساسية التي نحدد فيها مسار ورابط صورة أو فيديو؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> href
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="correct"> src
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> url
+                </label>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question" data-question="4" style="margin-bottom: 20px;">
+                <h3>4. لإظهار أزرار التشغيل والصوت في عنصر الصوت أو الفيديو نستخدم الخاصية:</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> autoplay
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="correct"> controls
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> loop
+                </label>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question" data-question="5" style="margin-bottom: 20px;">
+                <h3>5. هل وسم &lt;img&gt; يمتلك وسم إغلاق منفصل مثل &lt;/img&gt;؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> نعم دائماً
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="correct"> لا، فهو وسم مغلق ذاتياً Self-closing
+                </label>
+            </div>
+
+            <button class="btn btn-primary" id="submitQuiz" type="button" style="margin-top: 15px; width: 100%; padding: 12px; font-size: 1.1rem; cursor: pointer;">
+                ✅ تصحيح الاختبار
+            </button>
+
+            <div class="quiz-result" id="quizResult" style="margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1rem;"></div>
+        </section>
+
+        <!-- COMPLETION & NAVIGATION -->
+        <section class="card slide-up">
+            <span class="badge">🏁 نهاية الدرس السادس</span>
+            <h2>عمل ممتاز! 🎉</h2>
+            <p>أصبحت تتقن التعامل مع الوسائط والصور وإدراجها بكفاءة. جاهز للدرس السابع؟</p>
+        </section>
+
+        <div class="lesson-nav" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <a href="lesson5.html" class="btn btn-secondary">⬅️ الدرس الخامس</a>
+            <a href="lesson7.html" class="btn btn-primary" id="nextLesson">الدرس السابع ➜</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3>🚀 HTML Master Academy</h3>
+        <p>تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.</p>
+        <p>© 2026 HTML Master Academy</p>
+    </footer>
+
+    <!-- LOGIC MODULE -->
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { app } from "../js/firebase-config.js";
+
+        const auth = getAuth(app);
+
+        // 1. تسجيل الخروج
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "../login.html";
+            });
+        });
+
+        // 2. تصحيح الأسئلة الـ 5 الخاصة بالدرس السادس
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            let totalQuestions = 5;
+            let score = 0;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption && selectedOption.value === 'correct') {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quizResult');
+            if (score === totalQuestions) {
+                resultDiv.style.color = '#10b981';
+                resultDiv.innerHTML = `🎉 ممتاز! أجبت على جميع الأسئلة صحيحة (${score}/${totalQuestions}). يمكنك الانتقال للدرس التالي!`;
+                
+                // تحديث مؤشر التقدم لـ 30%
+                document.getElementById('progressBar').style.width = '30%';
+                document.getElementById('progressPercent').innerText = '30%';
+            } else {
+                resultDiv.style.color = '#ef4444';
+                resultDiv.innerHTML = `⚠️ حصلت على ${score} من ${totalQuestions}. حاول مرة أخرى للحصول على الدرجة كاملة!`;
+            }
+        });
+    </script>
+
+    <!-- وظيفة زر النسخ -->
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                button.innerText = '✅ تم النسخ!';
+                setTimeout(() => { button.innerText = '📋 نسخ'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

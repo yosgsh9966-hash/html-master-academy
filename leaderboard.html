@@ -1,0 +1,1940 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="قائمة الطلاب المتفوقين - HTML Master Academy">
+
+<title>🏆 الطلاب المتفوقون | HTML Master Academy</title>
+
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+
+    --secondary: #8b5cf6;
+
+    --gold: #f59e0b;
+    --silver: #94a3b8;
+    --bronze: #cd7f32;
+
+    --success: #10b981;
+
+    --bg: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --shadow:
+        0 20px 50px rgba(15, 23, 42, 0.10);
+
+    --radius: 22px;
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark {
+
+    --bg: #080d19;
+    --card: #111827;
+
+    --text: #f9fafb;
+    --muted: #9ca3af;
+
+    --border: #263244;
+
+    --shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            rgba(99,102,241,0.12),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at bottom left,
+            rgba(139,92,246,0.08),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    transition:
+        background 0.3s,
+        color 0.3s;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    backdrop-filter:
+        blur(15px);
+
+    background:
+        rgba(255,255,255,0.86);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+body.dark .header {
+
+    background:
+        rgba(17,24,39,0.88);
+}
+
+
+.header-inner {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 17px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+
+.logo-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 14px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: white;
+
+    font-size: 22px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+
+        0 8px 22px
+        rgba(99,102,241,0.30);
+}
+
+
+/* =========================================
+   HEADER BUTTONS
+========================================= */
+
+.header-actions {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.icon-button {
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.25s;
+}
+
+
+.icon-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--primary);
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+
+    width:
+        min(1100px, 94%);
+
+    margin:
+        45px auto 70px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.crown {
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius: 32px;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 54px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(245,158,11,0.15),
+            rgba(99,102,241,0.12)
+        );
+
+    border:
+        1px solid
+        rgba(245,158,11,0.25);
+
+    box-shadow:
+
+        0 20px 45px
+        rgba(245,158,11,0.12);
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 16px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(99,102,241,0.10);
+
+    color:
+        var(--primary);
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    margin-bottom: 14px;
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(32px, 6vw, 55px);
+
+    margin-bottom: 13px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.hero p {
+
+    color:
+        var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 17px;
+
+    margin-bottom: 25px;
+}
+
+
+.stat {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        18px;
+
+    padding:
+        22px;
+
+    text-align: center;
+
+    box-shadow:
+        var(--shadow);
+
+    transition: 0.25s;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-4px);
+}
+
+
+.stat-icon {
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+
+.stat-number {
+
+    font-size: 30px;
+
+    font-weight: 1000;
+
+    margin-bottom: 5px;
+}
+
+
+.stat-label {
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.card-title {
+
+    font-size: 23px;
+
+    font-weight: 1000;
+}
+
+
+.card-subtitle {
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   REFRESH BUTTON
+========================================= */
+
+.refresh-button {
+
+    border: none;
+
+    padding:
+        12px 18px;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(99,102,241,0.10);
+
+    color:
+        var(--primary);
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+
+.refresh-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(99,102,241,0.16);
+}
+
+
+/* =========================================
+   TOP THREE
+========================================= */
+
+.top-three {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+}
+
+
+.top-card {
+
+    position: relative;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius:
+        22px;
+
+    border:
+        1px solid var(--border);
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+
+.top-card:hover {
+
+    transform:
+        translateY(-6px);
+}
+
+
+.top-card.first {
+
+    order: 2;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(245,158,11,0.14),
+            rgba(245,158,11,0.03)
+        );
+
+    border-color:
+        rgba(245,158,11,0.35);
+}
+
+
+.top-card.second {
+
+    order: 1;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(148,163,184,0.14),
+            transparent
+        );
+}
+
+
+.top-card.third {
+
+    order: 3;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(205,127,50,0.12),
+            transparent
+        );
+}
+
+
+.medal {
+
+    font-size: 48px;
+
+    margin-bottom: 12px;
+}
+
+
+.top-name {
+
+    font-size: 20px;
+
+    font-weight: 1000;
+
+    margin-bottom: 8px;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+.top-score {
+
+    display: inline-block;
+
+    padding:
+        7px 13px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(16,185,129,0.12);
+
+    color:
+        var(--success);
+
+    font-weight: 1000;
+
+    margin-bottom: 8px;
+}
+
+
+.top-date {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   LEADERBOARD TABLE
+========================================= */
+
+.table-wrapper {
+
+    overflow-x:
+        auto;
+}
+
+
+.leaderboard {
+
+    width: 100%;
+
+    border-collapse:
+        separate;
+
+    border-spacing:
+        0 10px;
+}
+
+
+.leaderboard th {
+
+    text-align: right;
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+
+    padding:
+        10px 15px;
+}
+
+
+.leaderboard td {
+
+    padding:
+        17px 15px;
+
+    background:
+        var(--bg);
+
+    border-top:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.leaderboard td:first-child {
+
+    border-right:
+        1px solid var(--border);
+
+    border-radius:
+        0 14px 14px 0;
+}
+
+
+.leaderboard td:last-child {
+
+    border-left:
+        1px solid var(--border);
+
+    border-radius:
+        14px 0 0 14px;
+}
+
+
+.rank {
+
+    font-size: 20px;
+
+    font-weight: 1000;
+}
+
+
+.student-cell {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.avatar {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius:
+        13px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: white;
+
+    font-weight: 1000;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    flex-shrink: 0;
+}
+
+
+.student-name {
+
+    font-weight: 900;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+.score-badge {
+
+    display: inline-block;
+
+    padding:
+        7px 13px;
+
+    border-radius:
+        999px;
+
+    color:
+        var(--success);
+
+    background:
+        rgba(16,185,129,0.10);
+
+    font-weight: 1000;
+}
+
+
+.date {
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.empty {
+
+    text-align: center;
+
+    padding:
+        60px 20px;
+
+    color:
+        var(--muted);
+}
+
+
+.empty-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 15px;
+}
+
+
+.empty h3 {
+
+    color:
+        var(--text);
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    text-align: center;
+
+    color:
+        var(--muted);
+
+    padding:
+        10px 20px 40px;
+
+    line-height: 1.8;
+}
+
+
+.footer strong {
+
+    color:
+        var(--primary);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .top-three {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .top-card.first,
+    .top-card.second,
+    .top-card.third {
+
+        order: initial;
+    }
+
+
+    .card {
+
+        padding: 20px;
+    }
+
+
+    .card-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .refresh-button {
+
+        width: 100%;
+    }
+
+
+    .logo {
+
+        font-size: 16px;
+    }
+
+
+    .header-inner {
+
+        padding:
+            14px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .container {
+
+        width: 92%;
+
+        margin-top: 30px;
+    }
+
+
+    .leaderboard th,
+    .leaderboard td {
+
+        padding:
+            12px 9px;
+
+        font-size: 13px;
+    }
+
+
+    .avatar {
+
+        width: 36px;
+
+        height: 36px;
+
+        border-radius: 10px;
+    }
+
+
+    .student-cell {
+
+        gap: 7px;
+    }
+
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+.fade-in {
+
+    animation:
+        fadeIn 0.5s ease;
+}
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+<div class="header-inner">
+
+
+<div class="logo">
+
+<div class="logo-icon">
+
+🏆
+
+</div>
+
+HTML Master Academy
+
+</div>
+
+
+<div class="header-actions">
+
+
+<button
+    class="icon-button"
+    id="homeButton"
+    title="الرئيسية">
+
+🏠
+
+</button>
+
+
+<button
+    class="icon-button"
+    id="themeButton"
+    title="الوضع الليلي">
+
+🌙
+
+</button>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="crown">
+
+👑
+
+</div>
+
+
+<div class="badge">
+
+🏆 قائمة المتفوقين
+
+</div>
+
+
+<h1>
+
+HTML Master Academy
+
+</h1>
+
+
+<p>
+
+هنا أبطال الامتحان النهائي الذين
+<br>
+
+حققوا الدرجة النهائية في HTML.
+
+</p>
+
+</section>
+
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section class="stats">
+
+
+<div class="stat">
+
+<div class="stat-icon">
+
+👨‍🎓
+
+</div>
+
+
+<div
+    class="stat-number"
+    id="studentCount">
+
+0
+
+</div>
+
+
+<div class="stat-label">
+
+طالب متفوق
+
+</div>
+
+</div>
+
+
+
+<div class="stat">
+
+<div class="stat-icon">
+
+💯
+
+</div>
+
+
+<div
+    class="stat-number">
+
+100%
+
+</div>
+
+
+<div class="stat-label">
+
+الدرجة النهائية
+
+</div>
+
+</div>
+
+
+
+<div class="stat">
+
+<div class="stat-icon">
+
+🏆
+
+</div>
+
+
+<div
+    class="stat-number"
+    id="successCount">
+
+0
+
+</div>
+
+
+<div class="stat-label">
+
+حققوا الإتقان
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     TOP THREE
+========================================= -->
+
+<section
+    class="card"
+    id="topThreeSection">
+
+<div class="card-header">
+
+<div>
+
+<div class="card-title">
+
+🥇 أبطال HTML Master Academy
+
+</div>
+
+<div class="card-subtitle">
+
+أفضل الطلاب الذين حققوا الدرجة النهائية
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+    class="top-three"
+    id="topThree">
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     LEADERBOARD
+========================================= -->
+
+<section class="card">
+
+
+<div class="card-header">
+
+<div>
+
+<div class="card-title">
+
+🏆 جميع الطلاب المتفوقين
+
+</div>
+
+
+<div class="card-subtitle">
+
+الطلاب الذين اجتازوا الامتحان النهائي بدرجة 100%
+
+</div>
+
+</div>
+
+
+<button
+    class="refresh-button"
+    id="refreshButton">
+
+🔄 تحديث القائمة
+
+</button>
+
+</div>
+
+
+
+<div
+    id="leaderboardContent">
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+<p>
+
+🚀 <strong>HTML Master Academy</strong>
+
+</p>
+
+
+<p>
+
+استمر في التعلم، فكل سطر كود يقربك من الاحتراف 💻🔥
+
+</p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const themeButton =
+document.getElementById(
+    "themeButton"
+);
+
+const homeButton =
+document.getElementById(
+    "homeButton"
+);
+
+const refreshButton =
+document.getElementById(
+    "refreshButton"
+);
+
+const leaderboardContent =
+document.getElementById(
+    "leaderboardContent"
+);
+
+const topThree =
+document.getElementById(
+    "topThree"
+);
+
+const studentCount =
+document.getElementById(
+    "studentCount"
+);
+
+const successCount =
+document.getElementById(
+    "successCount"
+);
+
+
+/* =========================================
+   THEME
+========================================= */
+
+const savedTheme =
+localStorage.getItem(
+    "examTheme"
+);
+
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add(
+        "dark"
+    );
+
+    themeButton.textContent =
+        "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        const isDark =
+            document.body.classList.contains(
+                "dark"
+            );
+
+
+        themeButton.textContent =
+            isDark ? "☀️" : "🌙";
+
+
+        localStorage.setItem(
+
+            "examTheme",
+
+            isDark
+                ? "dark"
+                : "light"
+
+        );
+
+    }
+);
+
+
+/* =========================================
+   HOME
+========================================= */
+
+homeButton.addEventListener(
+    "click",
+    function() {
+
+        window.location.href =
+            "index.html";
+
+    }
+);
+
+
+/* =========================================
+   GET STUDENTS
+========================================= */
+
+function getStudents() {
+
+    const data =
+        localStorage.getItem(
+            "htmlMasterTopStudents"
+        );
+
+
+    if (!data) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const students =
+            JSON.parse(data);
+
+
+        if (!Array.isArray(students)) {
+
+            return [];
+
+        }
+
+
+        return students;
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   AVATAR LETTER
+========================================= */
+
+function getAvatar(name) {
+
+    if (!name) {
+
+        return "👤";
+
+    }
+
+
+    return name
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+}
+
+
+/* =========================================
+   LOAD LEADERBOARD
+========================================= */
+
+function loadLeaderboard() {
+
+    const students =
+        getStudents();
+
+
+    /* ==========================
+       STATS
+    ========================== */
+
+    studentCount.textContent =
+        students.length;
+
+
+    successCount.textContent =
+        students.length;
+
+
+    /* ==========================
+       EMPTY
+    ========================== */
+
+    if (students.length === 0) {
+
+        topThree.innerHTML = "";
+
+        leaderboardContent.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+
+                    🏆
+
+                </div>
+
+                <h3>
+
+                    لا يوجد طلاب متفوقون بعد
+
+                </h3>
+
+                <p>
+
+                    كن أول طالب يحصل على 100%!
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* ==========================
+       TOP THREE
+    ========================== */
+
+    const medals = [
+        "🥇",
+        "🥈",
+        "🥉"
+    ];
+
+
+    const classes = [
+        "first",
+        "second",
+        "third"
+    ];
+
+
+    let topHTML = "";
+
+
+    students
+        .slice(0, 3)
+        .forEach(
+            function(student, index) {
+
+                topHTML += `
+
+                    <div
+                        class="top-card
+                        ${classes[index]}">
+
+                        <div class="medal">
+
+                            ${medals[index]}
+
+                        </div>
+
+                        <div class="top-name">
+
+                            ${escapeHTML(
+                                student.name
+                            )}
+
+                        </div>
+
+                        <div class="top-score">
+
+                            ${student.score || 100}%
+
+                        </div>
+
+                        <div class="top-date">
+
+                            📅
+                            ${escapeHTML(
+                                student.date || "—"
+                            )}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+    topThree.innerHTML =
+        topHTML;
+
+
+    /* ==========================
+       TABLE
+    ========================== */
+
+    let tableHTML = `
+
+        <div class="table-wrapper">
+
+        <table class="leaderboard">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        المركز
+                    </th>
+
+                    <th>
+                        الطالب
+                    </th>
+
+                    <th>
+                        الدرجة
+                    </th>
+
+                    <th>
+                        تاريخ النجاح
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+
+    students.forEach(
+        function(student, index) {
+
+            let rankDisplay =
+                index + 1;
+
+
+            if (index === 0) {
+
+                rankDisplay = "🥇";
+
+            }
+
+            else if (index === 1) {
+
+                rankDisplay = "🥈";
+
+            }
+
+            else if (index === 2) {
+
+                rankDisplay = "🥉";
+
+            }
+
+
+            tableHTML += `
+
+                <tr>
+
+                    <td>
+
+                        <span class="rank">
+
+                            ${rankDisplay}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="student-cell">
+
+                            <div class="avatar">
+
+                                ${escapeHTML(
+                                    getAvatar(
+                                        student.name
+                                    )
+                                )}
+
+                            </div>
+
+
+                            <div class="student-name">
+
+                                ${escapeHTML(
+                                    student.name
+                                )}
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="score-badge">
+
+                            💯
+                            ${student.score || 100}%
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="date">
+
+                            📅
+                            ${escapeHTML(
+                                student.date || "—"
+                            )}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+
+    tableHTML += `
+
+            </tbody>
+
+        </table>
+
+        </div>
+
+    `;
+
+
+    leaderboardContent.innerHTML =
+        tableHTML;
+
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+function escapeHTML(value) {
+
+    if (value === undefined ||
+        value === null) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   REFRESH
+========================================= */
+
+refreshButton.addEventListener(
+    "click",
+    function() {
+
+        refreshButton.textContent =
+            "⏳ جاري التحديث...";
+
+
+        setTimeout(
+            function() {
+
+                loadLeaderboard();
+
+
+                refreshButton.textContent =
+                    "🔄 تحديث القائمة";
+
+            },
+            400
+        );
+
+    }
+);
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+loadLeaderboard();
+
+</script>
+
+
+</body>
+
+</html>
+```

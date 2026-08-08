@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="الامتحان النهائي - HTML Master Academy">
+
+<title>الامتحان النهائي | HTML Master Academy</title>
+
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================================
+   VARIABLES
+================================ */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+
+    --bg: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
+
+    --radius: 22px;
+}
+
+/* ================================
+   DARK MODE
+================================ */
+
+body.dark {
+    --bg: #0b1120;
+    --card: #111827;
+
+    --text: #f9fafb;
+    --muted: #9ca3af;
+
+    --border: #263244;
+
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(99,102,241,0.10),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(15px);
+
+    background: rgba(255,255,255,0.85);
+
+    border-bottom: 1px solid var(--border);
+}
+
+body.dark .header {
+    background: rgba(17,24,39,0.88);
+}
+
+.header-inner {
+    max-width: 1150px;
+    margin: auto;
+
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 14px;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(99,102,241,0.30);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-button {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+    color: var(--text);
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    transition: 0.25s;
+}
+
+.icon-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+/* ================================
+   MAIN
+================================ */
+
+.container {
+    width: min(1100px, 94%);
+
+    margin: 40px auto 70px;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 15px;
+
+    border-radius: 999px;
+
+    background: rgba(99,102,241,0.10);
+
+    color: var(--primary);
+
+    font-weight: 800;
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 5vw, 50px);
+
+    line-height: 1.2;
+
+    margin-bottom: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+/* ================================
+   CARD
+================================ */
+
+.card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+}
+
+/* ================================
+   START SCREEN
+================================ */
+
+.start-screen {
+    max-width: 720px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.exam-icon {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 28px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(99,102,241,0.30);
+}
+
+.start-screen h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.start-screen p {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+.name-input {
+    width: 100%;
+
+    padding: 17px 18px;
+
+    border: 2px solid var(--border);
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    border-radius: 15px;
+
+    outline: none;
+
+    font-size: 17px;
+
+    text-align: right;
+
+    transition: 0.25s;
+}
+
+.name-input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(99,102,241,0.12);
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.main-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    border: none;
+
+    padding: 17px 20px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 10px 25px rgba(99,102,241,0.25);
+
+    transition: 0.25s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(99,102,241,0.35);
+}
+
+.main-button:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   EXAM TOP
+================================ */
+
+.exam-top {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 20px;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.exam-title h2 {
+    margin-bottom: 6px;
+}
+
+.exam-title p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.timer-box {
+    min-width: 145px;
+
+    text-align: center;
+
+    padding: 14px 20px;
+
+    border-radius: 17px;
+
+    background: rgba(239,68,68,0.10);
+
+    border: 1px solid rgba(239,68,68,0.20);
+
+    color: var(--danger);
+}
+
+.timer-label {
+    display: block;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+
+    color: var(--muted);
+}
+
+.timer {
+    font-size: 28px;
+
+    font-weight: 900;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.timer.warning {
+    animation: timerPulse 1s infinite;
+}
+
+@keyframes timerPulse {
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ================================
+   PROGRESS
+================================ */
+
+.progress-area {
+    margin-bottom: 30px;
+}
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.progress-track {
+    height: 10px;
+
+    border-radius: 999px;
+
+    background: var(--border);
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    transition: width 0.35s ease;
+}
+
+/* ================================
+   QUESTIONS
+================================ */
+
+.question {
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 19px;
+
+    background: rgba(99,102,241,0.025);
+
+    transition: 0.25s;
+}
+
+.question:hover {
+    border-color: rgba(99,102,241,0.35);
+
+    transform: translateY(-2px);
+}
+
+.question-number {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 35px;
+    height: 35px;
+
+    border-radius: 10px;
+
+    background: rgba(99,102,241,0.12);
+
+    color: var(--primary);
+
+    font-weight: 900;
+
+    margin-left: 8px;
+}
+
+.question h3 {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin-bottom: 17px;
+}
+
+.option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    margin-top: 9px;
+
+    cursor: pointer;
+
+    background: var(--card);
+
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: var(--primary);
+
+    background: rgba(99,102,241,0.06);
+}
+
+.option input {
+    accent-color: var(--primary);
+
+    width: 18px;
+    height: 18px;
+}
+
+.option.selected {
+    border-color: var(--primary);
+
+    background: rgba(99,102,241,0.10);
+}
+
+/* ================================
+   SUBMIT
+================================ */
+
+.submit-button {
+    width: 100%;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #059669
+        );
+
+    box-shadow:
+        0 12px 25px rgba(16,185,129,0.25);
+
+    transition: 0.25s;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+}
+
+/* ================================
+   RESULT
+================================ */
+
+.result {
+    display: none;
+
+    text-align: center;
+}
+
+.result-icon {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 30px;
+
+    margin: 0 auto 20px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 50px;
+
+    background: rgba(16,185,129,0.12);
+}
+
+.result h2 {
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 65px;
+
+    font-weight: 1000;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.result-message {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+/* ================================
+   REVIEW
+================================ */
+
+.review {
+    text-align: right;
+
+    margin-top: 30px;
+}
+
+.review-title {
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.review-item {
+    padding: 18px;
+
+    border-radius: 15px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid var(--border);
+}
+
+.review-item.correct {
+    border-color: rgba(16,185,129,0.35);
+
+    background: rgba(16,185,129,0.07);
+}
+
+.review-item.wrong {
+    border-color: rgba(239,68,68,0.35);
+
+    background: rgba(239,68,68,0.07);
+}
+
+.review-question {
+    font-weight: 900;
+
+    margin-bottom: 10px;
+}
+
+.wrong-answer {
+    color: var(--danger);
+
+    margin-bottom: 5px;
+}
+
+.correct-answer {
+    color: var(--success);
+
+    font-weight: 800;
+}
+
+/* ================================
+   PERFECT
+================================ */
+
+.perfect-box {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,158,11,0.12),
+            rgba(16,185,129,0.10)
+        );
+
+    border:
+        1px solid rgba(245,158,11,0.30);
+}
+
+.perfect-box h3 {
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.redirect-text {
+    color: var(--muted);
+
+    margin-top: 10px;
+
+    font-size: 14px;
+}
+
+/* ================================
+   CERTIFICATE
+================================ */
+
+.certificate {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border: 2px solid var(--warning);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,158,11,0.08),
+            rgba(99,102,241,0.08)
+        );
+}
+
+.certificate h3 {
+    font-size: 25px;
+
+    margin-bottom: 12px;
+}
+
+.certificate p {
+    color: var(--muted);
+
+    line-height: 1.9;
+}
+
+/* ================================
+   HIDDEN
+================================ */
+
+.hidden {
+    display: none !important;
+}
+
+/* ================================
+   ANIMATION
+================================ */
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 700px) {
+
+    .container {
+        margin-top: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .header-inner {
+        padding: 14px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .exam-top {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-box {
+        width: 100%;
+    }
+
+    .question {
+        padding: 18px;
+    }
+
+    .question h3 {
+        font-size: 16px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================================
+     HEADER
+================================ -->
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="logo">
+
+<div class="logo-icon">
+🚀
+</div>
+
+HTML Master Academy
+
+</div>
+
+<div class="header-actions">
+
+<button
+ class="icon-button"
+ id="homeButton"
+ title="الرئيسية">
+
+🏠
+
+</button>
+
+<button
+ class="icon-button"
+ id="themeButton"
+ title="الوضع الليلي">
+
+🌙
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ================================
+     MAIN
+================================ -->
+
+<main class="container">
+
+<section class="hero">
+
+<div class="badge">
+🏆 الاختبار النهائي
+</div>
+
+<h1>
+HTML Master Academy
+</h1>
+
+<p>
+اختبر مهاراتك التي اكتسبتها خلال الدورة
+<br>
+وأثبت أنك متقن لغة HTML.
+</p>
+
+</section>
+
+<!-- ================================
+     START
+================================ -->
+
+<section
+    class="card start-screen"
+    id="startScreen">
+
+<div class="exam-icon">
+🎓
+</div>
+
+<h2>
+جاهز للامتحان النهائي؟
+</h2>
+
+<p>
+
+لديك <strong>25 دقيقة</strong>
+للإجابة على جميع الأسئلة.
+
+<br>
+
+اقرأ السؤال جيدًا قبل اختيار الإجابة.
+
+</p>
+
+<input
+ id="studentName"
+ class="name-input"
+ type="text"
+ placeholder="اكتب اسمك بالكامل"
+ autocomplete="name">
+
+<button
+ id="startButton"
+ class="main-button"
+ type="button">
+
+🚀 ابدأ الامتحان
+
+</button>
+
+</section>
+
+<!-- ================================
+     EXAM
+================================ -->
+
+<section
+    class="card hidden"
+    id="examScreen">
+
+<div class="exam-top">
+
+<div class="exam-title">
+
+<h2>
+📝 الامتحان النهائي
+</h2>
+
+<p>
+HTML Master Academy • اختبار الإتقان
+</p>
+
+</div>
+
+<div class="timer-box">
+
+<span class="timer-label">
+الوقت المتبقي
+</span>
+
+<span
+ id="timer"
+ class="timer">
+
+25:00
+
+</span>
+
+</div>
+
+</div>
+
+<div class="progress-area">
+
+<div class="progress-info">
+
+<span>
+تقدمك في الامتحان
+</span>
+
+<span id="progressText">
+0 / 10
+</span>
+
+</div>
+
+<div class="progress-track">
+
+<div
+    id="progressBar"
+    class="progress-bar">
+</div>
+
+</div>
+
+</div>
+
+<form id="examForm">
+
+<!-- Q1 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">1</span>
+
+ما اللغة المستخدمة لبناء هيكل صفحة الويب؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="html">
+HTML
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="css">
+CSS
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="javascript">
+JavaScript
+</label>
+
+</div>
+
+<!-- Q2 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">2</span>
+
+أي وسم يستخدم لكتابة أكبر عنوان؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="h1">
+&lt;h1&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="h6">
+&lt;h6&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="heading">
+&lt;heading&gt;
+</label>
+
+</div>
+
+<!-- Q3 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">3</span>
+
+أي وسم يستخدم لإنشاء رابط؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="a">
+&lt;a&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="link">
+&lt;link&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="href">
+&lt;href&gt;
+</label>
+
+</div>
+
+<!-- Q4 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">4</span>
+
+أي وسم يستخدم لإضافة صورة؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="img">
+&lt;img&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="image">
+&lt;image&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="src">
+&lt;src&gt;
+</label>
+
+</div>
+
+<!-- Q5 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">5</span>
+
+ما الخاصية المستخدمة لتحديد مصدر الصورة؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="src">
+src
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="href">
+href
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="link">
+link
+</label>
+
+</div>
+
+<!-- Q6 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">6</span>
+
+أي وسم يستخدم لكتابة فقرة؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q6" value="p">
+&lt;p&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="paragraph">
+&lt;paragraph&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="text">
+&lt;text&gt;
+</label>
+
+</div>
+
+<!-- Q7 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">7</span>
+
+أي وسم يحتوي على معلومات الصفحة مثل title و meta؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q7" value="head">
+&lt;head&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="body">
+&lt;body&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="info">
+&lt;info&gt;
+</label>
+
+</div>
+
+<!-- Q8 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">8</span>
+
+أين نضع المحتوى الظاهر للمستخدم؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q8" value="body">
+&lt;body&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="head">
+&lt;head&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="meta">
+&lt;meta&gt;
+</label>
+
+</div>
+
+<!-- Q9 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">9</span>
+
+ما الخاصية التي تحدد وصف الصورة البديل؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q9" value="alt">
+alt
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="title">
+title
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="description">
+description
+</label>
+
+</div>
+
+<!-- Q10 -->
+
+<div class="question">
+
+<h3>
+<span class="question-number">10</span>
+
+أي وسم يستخدم لإنشاء قائمة غير مرتبة؟
+
+</h3>
+
+<label class="option">
+<input type="radio" name="q10" value="ul">
+&lt;ul&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="ol">
+&lt;ol&gt;
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="list">
+&lt;list&gt;
+</label>
+
+</div>
+
+<button
+ type="submit"
+ class="submit-button">
+
+🏁 تسليم الامتحان وتصحيح الإجابات
+
+</button>
+
+</form>
+
+</section>
+
+<!-- ================================
+     RESULT
+================================ -->
+
+<section
+    class="card result"
+    id="resultScreen">
+
+<div class="result-icon">
+🏆
+</div>
+
+<h2>
+نتيجة الامتحان
+</h2>
+
+<div
+    class="score"
+    id="score">
+
+0%
+
+</div>
+
+<p
+    class="result-message"
+    id="resultMessage">
+</p>
+
+<div
+    class="perfect-box"
+    id="perfectBox">
+
+<h3>
+🎉 مبروك يا بطل!
+</h3>
+
+<p>
+
+لقد حصلت على الدرجة النهائية <strong>100%</strong>
+
+<br>
+
+تم تسجيل اسمك تلقائيًا في قائمة الطلاب المتفوقين.
+
+</p>
+
+<p class="redirect-text">
+🚀 سيتم تحويلك إلى قائمة المتصدرين...
+</p>
+
+</div>
+
+<div
+    class="certificate"
+    id="certificate">
+
+<h3>
+🎓 شهادة إتمام الدورة
+</h3>
+
+<p>
+
+قد أتم بنجاح الدورة التعليمية
+واختبار الإتقان النهائي،
+وأثبت إلمامه بمفاهيم لغة HTML.
+
+</p>
+
+<br>
+
+<p>
+<strong>
+متقن لغة HTML
+</strong>
+</p>
+
+<br>
+
+<p>
+HTML Master Academy
+<br>
+شهادة إلكترونية
+</p>
+
+</div>
+
+<div
+    class="review"
+    id="review">
+
+<h3 class="review-title">
+📚 مراجعة إجاباتك
+</h3>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- =====================================================
+     FIREBASE + JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyC20M4Hy2vTBI_kzygUlZbQNez9CliFz3I",
+
+    authDomain: "html-master-academy.firebaseapp.com",
+
+    projectId: "html-master-academy",
+
+    storageBucket: "html-master-academy.firebasestorage.app",
+
+    messagingSenderId: "785265810868",
+
+    appId: "1:785265810868:web:c78627e96898b15aaca6e1",
+
+    measurementId: "G-1283VTPB5W"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+const db =
+getFirestore(app);
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+const TOTAL_QUESTIONS = 10;
+
+const EXAM_TIME = 25 * 60;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const body =
+document.body;
+
+const themeButton =
+document.getElementById("themeButton");
+
+const homeButton =
+document.getElementById("homeButton");
+
+const startScreen =
+document.getElementById("startScreen");
+
+const examScreen =
+document.getElementById("examScreen");
+
+const resultScreen =
+document.getElementById("resultScreen");
+
+const studentName =
+document.getElementById("studentName");
+
+const startButton =
+document.getElementById("startButton");
+
+const examForm =
+document.getElementById("examForm");
+
+const timer =
+document.getElementById("timer");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const progressText =
+document.getElementById("progressText");
+
+const scoreElement =
+document.getElementById("score");
+
+const resultMessage =
+document.getElementById("resultMessage");
+
+const review =
+document.getElementById("review");
+
+const perfectBox =
+document.getElementById("perfectBox");
+
+const certificate =
+document.getElementById("certificate");
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const savedTheme =
+localStorage.getItem("examTheme");
+
+
+if (savedTheme === "dark") {
+
+    body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    () => {
+
+        body.classList.toggle("dark");
+
+        const dark =
+        body.classList.contains("dark");
+
+        themeButton.textContent =
+        dark ? "☀️" : "🌙";
+
+        localStorage.setItem(
+            "examTheme",
+            dark ? "dark" : "light"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+homeButton.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+        "index.html";
+
+    }
+);
+
+
+/* =====================================================
+   CORRECT ANSWERS
+===================================================== */
+
+const correctAnswers = {
+
+    q1: "html",
+
+    q2: "h1",
+
+    q3: "a",
+
+    q4: "img",
+
+    q5: "src",
+
+    q6: "p",
+
+    q7: "head",
+
+    q8: "body",
+
+    q9: "alt",
+
+    q10: "ul"
+
+};
+
+
+/* =====================================================
+   ANSWER TEXT
+===================================================== */
+
+const answerTexts = {
+
+    html: "HTML",
+
+    css: "CSS",
+
+    javascript: "JavaScript",
+
+    h1: "<h1>",
+
+    h6: "<h6>",
+
+    heading: "<heading>",
+
+    a: "<a>",
+
+    link: "<link>",
+
+    href: "href",
+
+    img: "<img>",
+
+    image: "<image>",
+
+    src: "src",
+
+    p: "<p>",
+
+    paragraph: "<paragraph>",
+
+    text: "<text>",
+
+    head: "<head>",
+
+    body: "<body>",
+
+    info: "<info>",
+
+    meta: "<meta>",
+
+    alt: "alt",
+
+    title: "title",
+
+    description: "description",
+
+    ul: "<ul>",
+
+    ol: "<ol>",
+
+    list: "<list>"
+
+};
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+let timeLeft =
+EXAM_TIME;
+
+let timerInterval =
+null;
+
+let examSubmitted =
+false;
+
+
+/* =====================================================
+   START EXAM
+===================================================== */
+
+startButton.addEventListener(
+    "click",
+    () => {
+
+        const name =
+        studentName.value.trim();
+
+
+        if (!name) {
+
+            alert(
+                "⚠️ من فضلك اكتب اسمك بالكامل أولاً."
+            );
+
+            studentName.focus();
+
+            return;
+
+        }
+
+
+        startScreen.classList.add("hidden");
+
+        examScreen.classList.remove("hidden");
+
+        examScreen.classList.add("fade-in");
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        startTimer();
+
+        updateProgress();
+
+    }
+);
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+studentName.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            startButton.click();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer() {
+
+    updateTimer();
+
+
+    timerInterval =
+    setInterval(
+        () => {
+
+            timeLeft--;
+
+            updateTimer();
+
+
+            if (timeLeft <= 0) {
+
+                clearInterval(
+                    timerInterval
+                );
+
+                autoSubmit();
+
+            }
+
+        },
+        1000
+    );
+
+}
+
+
+function updateTimer() {
+
+    const minutes =
+    Math.floor(timeLeft / 60);
+
+    const seconds =
+    timeLeft % 60;
+
+
+    timer.textContent =
+        String(minutes).padStart(2, "0")
+        + ":"
+        + String(seconds).padStart(2, "0");
+
+
+    if (timeLeft <= 60) {
+
+        timer.classList.add("warning");
+
+    }
+
+}
+
+
+function autoSubmit() {
+
+    if (examSubmitted) {
+        return;
+    }
+
+
+    alert(
+        "⏰ انتهى الوقت! سيتم تسليم الامتحان وتصحيحه تلقائيًا."
+    );
+
+
+    submitExam();
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+document.querySelectorAll(
+    'input[type="radio"]'
+).forEach(
+    (input) => {
+
+        input.addEventListener(
+            "change",
+            updateProgress
+        );
+
+    }
+);
+
+
+function updateProgress() {
+
+    let answered = 0;
+
+
+    for (
+        let i = 1;
+        i <= TOTAL_QUESTIONS;
+        i++
+    ) {
+
+        const answer =
+        document.querySelector(
+            `input[name="q${i}"]:checked`
+        );
+
+
+        if (answer) {
+            answered++;
+        }
+
+    }
+
+
+    const percentage =
+    (answered / TOTAL_QUESTIONS) * 100;
+
+
+    progressBar.style.width =
+    percentage + "%";
+
+
+    progressText.textContent =
+        answered
+        + " / "
+        + TOTAL_QUESTIONS;
+
+}
+
+
+/* =====================================================
+   OPTION EFFECT
+===================================================== */
+
+document.querySelectorAll(
+    ".option"
+).forEach(
+    (label) => {
+
+        label.addEventListener(
+            "click",
+            () => {
+
+                const question =
+                label.closest(".question");
+
+
+                question
+                .querySelectorAll(".option")
+                .forEach(
+                    (option) => {
+
+                        option.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+
+                label.classList.add(
+                    "selected"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+examForm.addEventListener(
+    "submit",
+    (event) => {
+
+        event.preventDefault();
+
+        submitExam();
+
+    }
+);
+
+
+/* =====================================================
+   CORRECTION
+===================================================== */
+
+async function submitExam() {
+
+    if (examSubmitted) {
+        return;
+    }
+
+
+    examSubmitted = true;
+
+
+    if (timerInterval) {
+
+        clearInterval(
+            timerInterval
+        );
+
+    }
+
+
+    let score = 0;
+
+    let reviewHTML = "";
+
+
+    for (
+        let i = 1;
+        i <= TOTAL_QUESTIONS;
+        i++
+    ) {
+
+        const questionName =
+        "q" + i;
+
+
+        const selected =
+        document.querySelector(
+            `input[name="${questionName}"]:checked`
+        );
+
+
+        const correct =
+        correctAnswers[questionName];
+
+
+        const selectedValue =
+        selected
+        ? selected.value
+        : null;
+
+
+        if (
+            selectedValue === correct
+        ) {
+
+            score++;
+
+        }
+
+
+        if (
+            selectedValue === correct
+        ) {
+
+            reviewHTML += `
+
+                <div class="review-item correct">
+
+                    <div class="review-question">
+
+                        ✅ السؤال ${i}
+
+                    </div>
+
+                    <div>
+
+                        إجابتك صحيحة 👏
+
+                    </div>
+
+                </div>
+
+            `;
+
+        } else {
+
+            const studentAnswer =
+            selectedValue
+            ? answerTexts[selectedValue]
+            : "لم تختر إجابة";
+
+
+            const correctAnswer =
+            answerTexts[correct];
+
+
+            reviewHTML += `
+
+                <div class="review-item wrong">
+
+                    <div class="review-question">
+
+                        ❌ السؤال ${i}
+
+                    </div>
+
+                    <div class="wrong-answer">
+
+                        إجابتك:
+                        ${studentAnswer}
+
+                    </div>
+
+                    <div class="correct-answer">
+
+                        ✅ الإجابة الصحيحة:
+                        ${correctAnswer}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    const percentage =
+    Math.round(
+        (score / TOTAL_QUESTIONS) * 100
+    );
+
+
+    /* =================================================
+       SHOW RESULT
+    ================================================= */
+
+    examScreen.classList.add("hidden");
+
+    resultScreen.style.display = "block";
+
+    resultScreen.classList.add("fade-in");
+
+
+    scoreElement.textContent =
+    percentage + "%";
+
+
+    review.innerHTML = `
+
+        <h3 class="review-title">
+
+            📚 مراجعة إجاباتك
+
+        </h3>
+
+        ${reviewHTML}
+
+    `;
+
+
+    /* =================================================
+       PERFECT
+    ================================================= */
+
+    if (percentage === 100) {
+
+        resultMessage.innerHTML =
+        "🎉 ممتاز جدًا! لقد أجبت على جميع الأسئلة بشكل صحيح.";
+
+
+        perfectBox.style.display =
+        "block";
+
+
+        certificate.style.display =
+        "block";
+
+
+        /* =============================================
+           SAVE TO FIREBASE
+        ============================================= */
+
+        const saved =
+        await saveTopStudent();
+
+
+        if (saved) {
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                    "leaderboard.html";
+
+                },
+                3000
+            );
+
+        }
+
+    }
+
+    else if (percentage >= 50) {
+
+        resultMessage.innerHTML =
+        "👏 أحسنت! لقد نجحت في الامتحان، لكن يمكنك تحسين نتيجتك أكثر.";
+
+    }
+
+    else {
+
+        resultMessage.innerHTML =
+        "📚 تحتاج إلى مراجعة بعض دروس HTML ثم المحاولة مرة أخرى.";
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SAVE TOP STUDENT
+===================================================== */
+
+async function saveTopStudent() {
+
+    const name =
+    studentName.value.trim();
+
+
+    if (!name) {
+
+        return false;
+
+    }
+
+
+    try {
+
+        await addDoc(
+
+            collection(
+                db,
+                "topStudents"
+            ),
+
+            {
+
+                name: name,
+
+                score: 100,
+
+                date:
+                new Date().toLocaleDateString(
+                    "ar-EG"
+                ),
+
+                createdAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+
+        console.log(
+            "✅ تم تسجيل الطالب في Firebase بنجاح"
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Firebase Error:",
+            error
+        );
+
+
+        alert(
+            "❌ لم يتم تسجيل الاسم في Firebase. تأكد من Firestore Rules."
+        );
+
+
+        return false;
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

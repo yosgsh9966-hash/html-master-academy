@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس الثالث عشر - بيانات الـ Meta ورأس المستند (HTML Head & Metadata) | HTML Master Academy">
+    <title>الدرس الثالث عشر | رأس المستند وبيانات Meta</title>
+    
+    <!-- CSS الموحد للموقع -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- 🔒 1. سكربت الحماية المباشر (يمنع فتح الصفحة بدون تسجيل الدخول) -->
+    <script type="module" src="../js/auth-guard.js"></script>
+
+    <!-- تنسيقات وتأثيرات الإضاءة للعنوان والخيارات -->
+    <style>
+        /* تأثير الجراديانت والأناقة للعنوان الرئيسي */
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+            margin-bottom: 10px;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* تحسين شكل بطاقة الأسئلة والخيارات */
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateX(-4px);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: #a855f7;
+            width: 18px;
+            height: 18px;
+        }
+
+        .code-block {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 4px solid #a855f7;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-preview-card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 450px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .social-preview-img {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .social-preview-body {
+            padding: 15px;
+        }
+
+        .social-preview-site {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .social-preview-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #f8fafc;
+            margin: 5px 0;
+        }
+
+        .social-preview-desc {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            🚀 HTML Master
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="lesson1.html" class="active">الدروس</a>
+            <a href="../leaderboard.html">🏆 المتصدرون</a>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي">
+                🌙
+            </button>
+            <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+                خروج 🚪
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="badge">📚 الدرس 13 من 20</span>
+        <h1>بيانات الـ Meta ورأس المستند (HTML Head & Metadata)</h1>
+        <p>تعلم كيفية إدارة رأس المستند &lt;head&gt; لتهيئة موقعك لمحركات البحث (SEO) وتحسين مظهر الروابط على منصات التواصل الاجتماعي.</p>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="progress-wrapper">
+        <div class="progress-label">
+            <span>تقدمك في الدورة</span>
+            <span class="progress-percent" id="progressPercent">65%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 65%;"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="container" style="max-width: 900px; margin: 0 auto; padding: 0 15px;">
+        
+        <!-- SECTION 1: WHAT IS HEAD & META -->
+        <section class="card slide-up">
+            <span class="badge">🏷️ ما هو عنصر &lt;head&gt;؟</span>
+            <h2>عنصر رأس المستند والبيانات الوصفية (Metadata)</h2>
+            <p>يحتوي الوسم <code>&lt;head&gt;</code> على معلومات موجهة للمتصفح ومحركات البحث، ولا تظهر مباشرة داخل الصفحة للمستخدم.</p>
+            <p>أهم الوسوم المستخدمة داخل <code>&lt;head&gt;</code>:</p>
+            <ul>
+                <li><code>&lt;title&gt;</code>: عنوان الصفحة الظاهر في تبويب المتصفح ونتائج البحث.</li>
+                <li><code>&lt;meta charset="UTF-8"&gt;</code>: ضبط ترميز الحروف ليدعم اللغة العربية بشكل صحيح.</li>
+                <li><code>&lt;meta name="viewport"&gt;</code>: جعل الصفحة متجاوبة مع كافة الشاشات والواتف الذكية.</li>
+                <li><code>&lt;meta name="description"&gt;</code>: وصف مختصر للصفحة يظهر أسفل العنوان في محركات البحث.</li>
+                <li><code>&lt;link rel="shortcut icon"&gt;</code>: إضافة أيقونة الموقع (Favicon).</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: OPEN GRAPH META TAGS -->
+        <section class="card slide-up">
+            <span class="badge">🌐 بروتوكول Open Graph</span>
+            <h2>تحسين مظهر الرابط عند المشاركة (Social Media SEO)</h2>
+            <p>تُستخدم وسوم Open Graph (التي تبدأ بـ <code>og:</code>) لتعيين الصورة، العنوان، والوصف الذي يظهر للمستخدمين عند مشاركة رابط موقعك على الفيسبوك، واتساب، أو إكس (تويتر).</p>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;دورة تعلم HTML المحترفة&lt;/title&gt;
+    &lt;meta name="description" content="تعلم لغة HTML من الصفر حتى الاحتراف مع تطبيق عملي واختبارات تفاعلية."&gt;
+
+    &lt;!-- Open Graph Meta Tags --&gt;
+    &lt;meta property="og:title" content="دورة HTML Master Academy"&gt;
+    &lt;meta property="og:description" content="اشترك الآن وابدأ رحلتك في برمجة وتطوير المواقع."&gt;
+    &lt;meta property="og:image" content="https://example.com/cover.jpg"&gt;
+    &lt;meta property="og:url" content="https://example.com"&gt;
+&lt;/head&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DEMO PREVIEW -->
+        <section class="card slide-up">
+            <span class="badge">👁️ معاينة البطاقة</span>
+            <h2>كيف تبدو البيانات عند مشاركة الرابط على شبكات التواصل؟</h2>
+            <div class="demo-box">
+                <p>هكذا تترجم المنصات كود Open Graph إلى كارت معاينة أنيق:</p>
+
+                <div class="social-preview-card">
+                    <div class="social-preview-img">
+                        🚀
+                    </div>
+                    <div class="social-preview-body">
+                        <div class="social-preview-site">HTMLMASTER.COM</div>
+                        <div class="social-preview-title">دورة HTML Master Academy</div>
+                        <div class="social-preview-desc">اشترك الآن وابدأ رحلتك في برمجة وتطوير المواقع مع تطبيق عملي واختبارات تفاعلية.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: QUIZ -->
+        <section class="card quiz slide-up" id="lessonQuiz">
+            <span class="badge">📝 اختبار الدرس الثالث عشر</span>
+            <h2>اختبر معرفتك في بيانات Meta ورأس المستند</h2>
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question" data-question="1" style="margin-bottom: 20px;">
+                <h3>1. ما فائدة إضافة &lt;meta charset="UTF-8"&gt; في رأس المستند؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> تسريع تحميل الصور في الصفحة
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="correct"> ضمان عرض الحروف والرموز بجميع اللغات (بما فيها العربية) بشكل صحيح
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> حماية الموقع من الاختراق
+                </label>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question" data-question="2" style="margin-bottom: 20px;">
+                <h3>2. ما الوسم المسؤول عن تحديد العنوان الذي يظهر في تبويب المتصفح ب أعلى الصفحة؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> &lt;header&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="correct"> &lt;title&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> &lt;meta name="title"&gt;
+                </label>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question" data-question="3" style="margin-bottom: 20px;">
+                <h3>3. ما فائدة الوسم &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="correct"> جعل الموقع متجاوباً وملائماً لأحجام شاشات الهواتف والأجهزة المختلفة
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> تغيير ألوان الصفحة تلقائياً
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> تكبير الخطوط داخل الصفحة
+                </label>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question" data-question="4" style="margin-bottom: 20px;">
+                <h3>4. تُستخدم الوسوم التي تبدأ بـ og: (مثل og:image) لأجل:</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="correct"> التحكم في المعاينة والصورة والوصف عند مشاركة رابط الموقع على مواقع التواصل
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> ربط قاعدة البيانات بالموقع
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> إضافة أزرار الإعجاب تلقائياً
+                </label>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question" data-question="5" style="margin-bottom: 20px;">
+                <h3>5. أين توضع عادةً كافة الوسوم المتعلقة بـ Title و Meta و Favicon؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> داخل الوسم &lt;body&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="correct"> داخل الوسم &lt;head&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> داخل الوسم &lt;footer&gt;
+                </label>
+            </div>
+
+            <button class="btn btn-primary" id="submitQuiz" type="button" style="margin-top: 15px; width: 100%; padding: 12px; font-size: 1.1rem; cursor: pointer;">
+                ✅ تصحيح الاختبار
+            </button>
+
+            <div class="quiz-result" id="quizResult" style="margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1rem;"></div>
+        </section>
+
+        <!-- COMPLETION & NAVIGATION -->
+        <section class="card slide-up">
+            <span class="badge">🏁 نهاية الدرس الثالث عشر</span>
+            <h2>عمل ممتاز جداً! 👏</h2>
+            <p>أصبحت تتقن تجهيز رأس المستند وتهيئة محركات البحث ووسوم التواصل. جاهز للدرس الرابع عشر؟</p>
+        </section>
+
+        <div class="lesson-nav" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <a href="lesson12.html" class="btn btn-secondary">⬅️ الدرس الثاني عشر</a>
+            <a href="lesson14.html" class="btn btn-primary" id="nextLesson">الدرس الرابع عشر ➜</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3>🚀 HTML Master Academy</h3>
+        <p>تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.</p>
+        <p>© 2026 HTML Master Academy</p>
+    </footer>
+
+    <!-- LOGIC MODULE -->
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { app } from "../js/firebase-config.js";
+
+        const auth = getAuth(app);
+
+        // 1. تسجيل الخروج
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "../login.html";
+            });
+        });
+
+        // 2. تصحيح الأسئلة الـ 5 الخاصة بالدرس الثالث عشر
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            let totalQuestions = 5;
+            let score = 0;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption && selectedOption.value === 'correct') {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quizResult');
+            if (score === totalQuestions) {
+                resultDiv.style.color = '#10b981';
+                resultDiv.innerHTML = `🎉 ممتاز! أجبت على جميع الأسئلة صحيحة (${score}/${totalQuestions}). يمكنك الانتقال للدرس التالي!`;
+                
+                // تحديث مؤشر التقدم لـ 65%
+                document.getElementById('progressBar').style.width = '65%';
+                document.getElementById('progressPercent').innerText = '65%';
+            } else {
+                resultDiv.style.color = '#ef4444';
+                resultDiv.innerHTML = `⚠️ حصلت على ${score} من ${totalQuestions}. حاول مرة أخرى للحصول على الدرجة كاملة!`;
+            }
+        });
+    </script>
+
+    <!-- وظيفة زر النسخ -->
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                button.innerText = '✅ تم النسخ!';
+                setTimeout(() => { button.innerText = '📋 نسخ'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

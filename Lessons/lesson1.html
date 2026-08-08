@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="الدرس الأول في HTML - مقدمة وتعلم أساسيات HTML"
+    >
+
+    <title>الدرس الأول | مقدمة في HTML 🚀</title>
+
+
+    <!-- =====================================================
+         🎨 CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- =====================================================
+         ⚙️ JavaScript
+         ===================================================== -->
+
+    <!-- الوظائف العامة + Dark/Light + Copy + Progress -->
+    <script
+        src="../js/script.js"
+        defer
+    ></script>
+
+    <!-- حماية الدرس من الدخول بدون تسجيل -->
+    <script
+        src="../js/auth-guard.js"
+        defer
+    ></script>
+
+    <!-- نظام اختبارات الدروس -->
+    <script
+        src="../js/quiz.js"
+        defer
+    ></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     🧭 NAVBAR
+     ========================================================= -->
+
+<header class="navbar">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+        🚀 HTML Master Academy
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="../index.html">
+            🏠 الرئيسية
+        </a>
+
+        <a href="lesson1.html">
+            📚 الدرس 1
+        </a>
+
+        <a href="lesson2.html">
+            الدرس التالي ⬅️
+        </a>
+
+        <a href="../leaderboard.html">
+            🏆 المتصدرين
+        </a>
+
+    </nav>
+
+
+    <button
+        class="theme-toggle-btn"
+        id="themeToggle"
+        type="button"
+    >
+        🌙 الوضع الليلي
+    </button>
+
+</header>
+
+
+
+<!-- =========================================================
+     📚 MAIN
+     ========================================================= -->
+
+<main>
+
+
+    <!-- =====================================================
+         🎯 LESSON HEADER
+         ===================================================== -->
+
+    <section class="container">
+
+        <div class="lesson-header">
+
+            <p>
+                🚀 HTML MASTER ACADEMY
+            </p>
+
+            <h1>
+                الدرس الأول: مقدمة في HTML
+            </h1>
+
+            <p>
+                في هذا الدرس سنتعرف على لغة HTML،
+                وما وظيفتها، وكيف تبدأ أول صفحة ويب لك.
+            </p>
+
+
+            <!-- Progress -->
+
+            <div
+                class="progress-container"
+                aria-label="نسبة تقدم الدرس"
+            >
+
+                <div
+                    class="progress-bar"
+                    data-progress="5"
+                    style="width: 5%;"
+                ></div>
+
+            </div>
+
+            <p>
+                📊 تقدمك في المسار: <strong>5%</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         🧠 SECTION 1
+         ===================================================== -->
+
+    <section class="container">
+
+        <div class="card">
+
+            <h2>
+                🧠 ما هي HTML؟
+            </h2>
+
+            <p>
+                HTML هي اختصار لـ
+                <strong>HyperText Markup Language</strong>
+                أي لغة ترميز النص التشعبي.
+            </p>
+
+            <p>
+                وهي اللغة الأساسية التي نستخدمها لبناء
+                هيكل صفحات الويب.
+            </p>
+
+            <p>
+                باستخدام HTML نستطيع إنشاء العناوين،
+                والفقرات، والصور، والروابط، والقوائم،
+                والأزرار، وغيرها من عناصر الصفحة.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             💻 SECTION 2
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                💻 هل HTML لغة برمجة؟
+            </h2>
+
+            <p>
+                لا، HTML ليست لغة برمجة بالمعنى التقليدي.
+            </p>
+
+            <p>
+                HTML هي
+                <strong>لغة ترميز Markup Language</strong>
+                وتستخدم لتحديد هيكل ومحتوى الصفحة.
+            </p>
+
+            <p>
+                لاحقًا ستتعلم أن:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    🎨 CSS مسؤولة عن الشكل والتصميم.
+                </li>
+
+                <li>
+                    ⚙️ JavaScript مسؤولة عن التفاعل والوظائف.
+                </li>
+
+                <li>
+                    🏗️ HTML مسؤولة عن هيكل الصفحة ومحتواها.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🧩 SECTION 3
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🧩 كيف تعمل HTML؟
+            </h2>
+
+            <p>
+                المتصفح مثل Chrome أو Edge يقرأ كود HTML
+                ثم يحوله إلى صفحة يستطيع المستخدم رؤيتها.
+            </p>
+
+
+            <div class="card">
+
+                <h3>
+                    مثال بسيط:
+                </h3>
+
+                <pre><code>&lt;h1&gt;مرحبا بالعالم&lt;/h1&gt;</code></pre>
+
+                <p>
+                    هذا الكود ينشئ عنوانًا رئيسيًا
+                    يحتوي على النص:
+                    <strong>مرحبا بالعالم</strong>.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🏷️ SECTION 4
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🏷️ ما هو الـ Tag؟
+            </h2>
+
+            <p>
+                الـ Tag أو الوسم هو العنصر الذي نستخدمه
+                لإخبار المتصفح بنوع المحتوى.
+            </p>
+
+            <p>
+                مثلًا:
+            </p>
+
+
+            <pre><code>&lt;h1&gt;عنوان رئيسي&lt;/h1&gt;
+
+&lt;p&gt;هذه فقرة نصية.&lt;/p&gt;
+
+&lt;button&gt;اضغط هنا&lt;/button&gt;</code></pre>
+
+
+            <p>
+                كل وسم له وظيفة معينة.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🧱 SECTION 5
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🧱 أول صفحة HTML
+            </h2>
+
+            <p>
+                الصفحة الأساسية في HTML تحتوي عادةً
+                على مجموعة من العناصر المهمة.
+            </p>
+
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;صفحتي الأولى&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;مرحبا بالعالم&lt;/h1&gt;
+
+    &lt;p&gt;هذه أول صفحة HTML لي.&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+            <p>
+                لا تقلق إذا لم تفهم كل شيء الآن.
+                سنتعلم كل جزء بالتفصيل في الدروس القادمة.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             📋 SECTION 6
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                📋 جرب بنفسك
+            </h2>
+
+            <p>
+                انسخ الكود التالي وجربه في ملف HTML.
+            </p>
+
+
+            <pre id="lessonCode"><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+
+    &lt;p&gt;I am learning HTML.&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+            <button
+                class="btn copy-btn"
+                data-copy="#lessonCode"
+                type="button"
+            >
+                📋 نسخ الكود
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🎯 SECTION 7
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🎯 ماذا تعلمنا؟
+            </h2>
+
+            <ul>
+
+                <li>
+                    ✅ معنى HTML.
+                </li>
+
+                <li>
+                    ✅ HTML مسؤولة عن هيكل الصفحة.
+                </li>
+
+                <li>
+                    ✅ HTML ليست لغة برمجة.
+                </li>
+
+                <li>
+                    ✅ تعرفنا على الـ Tags.
+                </li>
+
+                <li>
+                    ✅ أنشأنا أول صفحة HTML.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- =================================================
+             📝 QUIZ
+             ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                📝 اختبار الدرس الأول
+            </h2>
+
+            <p>
+                اختبر فهمك قبل الانتقال إلى الدرس التالي.
+            </p>
+
+        </div>
+
+
+
+        <!-- السؤال 1 -->
+
+        <div class="question-card">
+
+            <h3>
+                1️⃣ ماذا تعني HTML؟
+            </h3>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="correct"
+                >
+
+                HyperText Markup Language
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="wrong"
+                >
+
+                Hyper Tool Modern Language
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="wrong"
+                >
+
+                HighText Machine Language
+
+            </label>
+
+        </div>
+
+
+
+        <!-- السؤال 2 -->
+
+        <div class="question-card">
+
+            <h3>
+                2️⃣ هل HTML لغة برمجة؟
+            </h3>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="wrong"
+                >
+
+                نعم، HTML لغة برمجة
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="correct"
+                >
+
+                لا، HTML لغة ترميز
+
+            </label>
+
+        </div>
+
+
+
+        <!-- السؤال 3 -->
+
+        <div class="question-card">
+
+            <h3>
+                3️⃣ ما وظيفة HTML الأساسية؟
+            </h3>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="correct"
+                >
+
+                بناء هيكل صفحة الويب
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="wrong"
+                >
+
+                تشغيل الألعاب فقط
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="wrong"
+                >
+
+                تصميم الصور فقط
+
+            </label>
+
+        </div>
+
+
+
+        <!-- السؤال 4 -->
+
+        <div class="question-card">
+
+            <h3>
+                4️⃣ أي وسم يستخدم لإنشاء عنوان رئيسي؟
+            </h3>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="correct"
+                >
+
+                &lt;h1&gt;
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="wrong"
+                >
+
+                &lt;title1&gt;
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="wrong"
+                >
+
+                &lt;heading&gt;
+
+            </label>
+
+        </div>
+
+
+
+        <!-- السؤال 5 -->
+
+        <div class="question-card">
+
+            <h3>
+                5️⃣ أين يظهر محتوى الصفحة للمستخدم؟
+            </h3>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="correct"
+                >
+
+                داخل &lt;body&gt;
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="wrong"
+                >
+
+                داخل &lt;head&gt; فقط
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="wrong"
+                >
+
+                داخل &lt;html&gt; فقط
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🧮 QUIZ BUTTON
+             ================================================= -->
+
+        <div class="card">
+
+            <button
+                type="button"
+                class="btn"
+                id="checkQuiz"
+            >
+                ✅ تصحيح الاختبار
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                id="resetQuiz"
+            >
+                🔄 إعادة الاختبار
+            </button>
+
+
+            <div
+                id="quizResult"
+                class="result"
+                style="display: none;"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             🏁 LESSON NAVIGATION
+             ================================================= -->
+
+        <div class="lesson-navigation">
+
+
+            <a
+                href="../index.html"
+                class="btn"
+            >
+                🏠 الرئيسية
+            </a>
+
+
+            <button
+                type="button"
+                class="btn btn-success"
+                data-complete-lesson="1"
+            >
+                ✅ إنهاء الدرس
+            </button>
+
+
+            <a
+                href="lesson2.html"
+                class="btn"
+            >
+                الدرس التالي ➡️
+            </a>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     🦶 FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <h2>
+            🚀 HTML Master Academy
+        </h2>
+
+        <p>
+            تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.
+        </p>
+
+        <p>
+            جميع الحقوق محفوظة ©
+            <span id="currentYear">2026</span>
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

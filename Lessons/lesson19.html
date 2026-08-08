@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس التاسع عشر - أفضل الممارسات والأداء وتحسين محركات البحث (Best Practices, Performance & SEO) | HTML Master Academy">
+    <title>الدرس التاسع عشر | الأداء وتحسين محركات البحث (SEO)</title>
+    
+    <!-- CSS الموحد للموقع -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- 🔒 1. سكربت الحماية المباشر (يمنع فتح الصفحة بدون تسجيل الدخول) -->
+    <script type="module" src="../js/auth-guard.js"></script>
+
+    <!-- تنسيقات وتأثيرات الإضاءة للعنوان والخيارات -->
+    <style>
+        /* تأثير الجراديانت والأناقة للعنوان الرئيسي */
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #6366f1 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 10px 30px rgba(16, 185, 129, 0.25);
+            margin-bottom: 10px;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* تحسين شكل بطاقة الأسئلة والخيارات */
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            transform: translateX(-4px);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: #10b981;
+            width: 18px;
+            height: 18px;
+        }
+
+        .code-block {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            🚀 HTML Master
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="lesson1.html" class="active">الدروس</a>
+            <a href="../leaderboard.html">🏆 المتصدرون</a>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي">
+                🌙
+            </button>
+            <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+                خروج 🚪
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="badge">📚 الدرس 19 من 20</span>
+        <h1>أفضل الممارسات والأداء وتحسين محركات البحث (Best Practices, Performance & SEO)</h1>
+        <p>تعلم كيفية بناء موقع سريع للغايّة، صديق لمحركات البحث (SEO)، ويتبع المعايير القياسية العالمية بكتابة كود نظيف.</p>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="progress-wrapper">
+        <div class="progress-label">
+            <span>تقدمك في الدورة</span>
+            <span class="progress-percent" id="progressPercent">95%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 95%;"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="container" style="max-width: 900px; margin: 0 auto; padding: 0 15px;">
+        
+        <!-- SECTION 1: CONCEPTS -->
+        <section class="card slide-up">
+            <span class="badge">⚡ أداء الويب وSEO</span>
+            <h2>ما هي أساليب تحسين الأداء وSEO؟</h2>
+            <p>كتابة كود HTML ممتاز تتطلب مراعاة السرعة وتجربة المستخدم وسهولة أرشفته من محركات البحث مثل Google عبر ثلاثة محاور رئيسية:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🔍 SEO المتقدم</h3>
+                    <p>استخدام أوسمة Open Graph وميتا التوضيح لتهيئية ظهور رابط الموقع بصورة واضحة على منصات التواصل الاجتماعي ومحركات البحث.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ التحميل الكسول (Lazy Loading)</h3>
+                    <p>تأخير تحميل الصور والفيديوهات غير الظاهرة على الشاشة فوراً لتسريع وقت التحميل الأولي للموقع.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧹 Clean Code Practices</h3>
+                    <p>تنظيف كود HTML من العناصر غير الضرورية والاعتماد على الأوسمة الدلالية لتسهيل زحف محركات البحث (Crawling).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CODE EXAMPLES -->
+        <section class="card slide-up">
+            <span class="badge">💻 الأكواد والتطبيق</span>
+            <h2>أمثلة برمجية لـ SEO والتحميل الكسول</h2>
+
+            <div class="code-block">
+                <button class="copy-btn" type="button" onclick="copyCode(this)">📋 نسخ</button>
+                <pre><code>&lt;!-- 1. أوسمة Meta للـ SEO وشبكات التواصل --&gt;
+&lt;meta name="description" content="أفضل اكاديمية لتعلم تطوير الويب وHTML5 باللغة العربية"&gt;
+&lt;meta property="og:title" content="HTML Master Academy"&gt;
+&lt;meta property="og:image" content="https://example.com/cover.jpg"&gt;
+
+&lt;!-- 2. تحميل الصور كسولاً لتسريع الصفحة --&gt;
+&lt;img src="large-banner.jpg" alt="بنر إعلاني" loading="lazy" width="800" height="400"&gt;
+
+&lt;!-- 3. الربط مسبقاً بالسيرفرات المعتمدة لتسريع الخطوط (Preconnect) --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DEMO PREVIEW -->
+        <section class="card slide-up">
+            <span class="badge">👁️ المعاينة والتوضيح</span>
+            <h2>قواعد ذهبية لأداء ممتاز:</h2>
+            <div class="demo-box">
+                <p>🔹 <strong>تحديد الأبعاد المسبقة:</strong> احرص دائماً على إضافة `width` و `height` للصور لتفادي قفزات المحتوى أثناء التحميل (Layout Shifts).</p>
+                <p>🔹 <strong>تقليل استدعاء السكربتات:</strong> استخدم `defer` أو `async` عند استدعاء ملفات JavaScript لعدم حجب حزم HTML أثناء التحميل.</p>
+                <p>🔹 <strong>ربط روابطCanonical:</strong> استخدم `<link rel="canonical" href="...">` لمنع المشكلات المتعلقة بالمحتوى المكرر (Duplicate Content).</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: QUIZ -->
+        <section class="card quiz slide-up" id="lessonQuiz">
+            <span class="badge">📝 اختبار الدرس التاسع عشر</span>
+            <h2>اختبر معرفتك في الأداء وSEO</h2>
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question" data-question="1" style="margin-bottom: 20px;">
+                <h3>1. ما الخاصية المستخدمة لتأخير تحميل الصور حتى يصل إليها المستخدم في الصفحة؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> defer="true"
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="correct"> loading="lazy"
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q1" value="wrong"> async="lazy"
+                </label>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question" data-question="2" style="margin-bottom: 20px;">
+                <h3>2. ما الهدف من استخدام أوسمة Open Graph (og:) في قسم `<head>`؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="correct"> التحكم في كيفية عرض العنوان والصورة عند مشاركة الرابط على مواقع التواصل
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> تسريع استجابة الخادم
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q2" value="wrong"> حماية الموقع من الهجمات الإلكترونية
+                </label>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question" data-question="3" style="margin-bottom: 20px;">
+                <h3>3. لماذا نحدد قيمتي `width` و `height` للصور بوضوح في HTML؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> فقط لتغيير حجم الصورة مرئياً
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="correct"> لمنع تحرك وانزياح المحتوى (CLS - Cumulative Layout Shift) أثناء تحميل الصورة
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q3" value="wrong"> لتقليل جودة الصورة تلقائياً
+                </label>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question" data-question="4" style="margin-bottom: 20px;">
+                <h3>4. ما فائدة الوسم `<link rel="preconnect" ...>`؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="correct"> إنشاء اتصال مبكر بالسيرفرات الخارجية (مثل Google Fonts) لتسريع الجلب
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> إعادة توجيه الزائر لصفحة أخرى
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q4" value="wrong"> إخفاء محتوى الصفحة عن الزوار
+                </label>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question" data-question="5" style="margin-bottom: 20px;">
+                <h3>5. أي الأوسمة التالية ضروري جداً لتحسين وصف الموقع في نتائج بحث جوجل؟</h3>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="correct"> &lt;meta name="description" content="..."&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> &lt;meta name="keywords" content="..."&gt;
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="q5" value="wrong"> &lt;meta name="author" content="..."&gt;
+                </label>
+            </div>
+
+            <button class="btn btn-primary" id="submitQuiz" type="button" style="margin-top: 15px; width: 100%; padding: 12px; font-size: 1.1rem; cursor: pointer;">
+                ✅ تصحيح الاختبار
+            </button>
+
+            <div class="quiz-result" id="quizResult" style="margin-top: 15px; font-weight: bold; text-align: center; font-size: 1.1rem;"></div>
+        </section>
+
+        <!-- COMPLETION & NAVIGATION -->
+        <section class="card slide-up">
+            <span class="badge">🏁 نهاية الدرس التاسع عشر</span>
+            <h2>عمل إستثنائي! وصلت إلى 95% من الدورة 🚀</h2>
+            <p>أنت الآن على بعد خطوة واحدة فقط من الاختبار النهائي للشهادة في الدرس العشرين!</p>
+        </section>
+
+        <div class="lesson-nav" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <a href="lesson18.html" class="btn btn-secondary">⬅️ الدرس الثامن عشر</a>
+            <a href="lesson20.html" class="btn btn-primary" id="nextLesson">الدرس العشرون (المشروع والشهادة) 🎓 ➜</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3>🚀 HTML Master Academy</h3>
+        <p>تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.</p>
+        <p>© 2026 HTML Master Academy</p>
+    </footer>
+
+    <!-- LOGIC MODULE -->
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { app } from "../js/firebase-config.js";
+
+        const auth = getAuth(app);
+
+        // 1. تسجيل الخروج
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                window.location.href = "../login.html";
+            });
+        });
+
+        // 2. تصحيح الأسئلة الـ 5 الخاصة بالدرس التاسع عشر
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            let totalQuestions = 5;
+            let score = 0;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption && selectedOption.value === 'correct') {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quizResult');
+            if (score === totalQuestions) {
+                resultDiv.style.color = '#10b981';
+                resultDiv.innerHTML = `🎉 ممتاز! أجبت على جميع الأسئلة صحيحة (${score}/${totalQuestions}). يمكنك الانتقال للدرس الأخير والاختبار النهائي!`;
+                
+                // تحديث مؤشر التقدم لـ 95%
+                document.getElementById('progressBar').style.width = '95%';
+                document.getElementById('progressPercent').innerText = '95%';
+            } else {
+                resultDiv.style.color = '#ef4444';
+                resultDiv.innerHTML = `⚠️ حصلت على ${score} من ${totalQuestions}. حاول مرة أخرى للحصول على الدرجة كاملة!`;
+            }
+        });
+    </script>
+
+    <!-- وظيفة زر النسخ -->
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                button.innerText = '✅ تم النسخ!';
+                setTimeout(() => { button.innerText = '📋 نسخ'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

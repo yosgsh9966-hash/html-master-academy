@@ -1,0 +1,488 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="HTML Master Academy - تعلم HTML من الصفر حتى الاحتراف"
+    >
+
+    <title>HTML Master Academy 🚀</title>
+
+
+    <!-- ================================
+         CSS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- ================================
+         JavaScript
+    ================================= -->
+
+    <script
+        src="js/script.js"
+        defer
+    ></script>
+
+    <script
+        src="js/theme-toggle.js"
+        defer
+    ></script>
+
+    <!-- Firebase Authentication -->
+    <script
+        type="module"
+        src="js/auth.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     NAVBAR
+================================================== -->
+
+<header class="navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        🚀 HTML Master
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            🏠 الرئيسية
+        </a>
+
+        <a href="Lessons/lesson1.html">
+            📚 الدروس
+        </a>
+
+        <a href="leaderboard.html">
+            🏆 المتصدرون
+        </a>
+
+        <a href="final-exam.html">
+            🎓 الامتحان النهائي
+        </a>
+
+    </nav>
+
+
+    <!-- ACTIONS -->
+
+    <div class="nav-actions">
+
+
+        <!-- DARK MODE -->
+
+        <button
+            class="theme-toggle-btn"
+            id="themeToggle"
+            type="button"
+            aria-label="تفعيل الوضع الليلي"
+        >
+            🌙
+        </button>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <a
+            href="login.html"
+            class="btn"
+            data-login-button
+        >
+            🔐 تسجيل الدخول
+        </a>
+
+
+        <!-- USER NAME -->
+
+        <span
+            data-user-name
+            style="display: none;"
+        ></span>
+
+
+        <!-- LOGOUT BUTTON -->
+
+        <button
+            class="btn btn-danger"
+            type="button"
+            data-logout-button
+            style="display: none;"
+        >
+            🚪 تسجيل الخروج
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =================================================
+     HERO
+================================================== -->
+
+<section class="container hero-section">
+
+    <div class="hero-content">
+
+
+        <span class="hero-badge">
+            🚀 HTML MASTER ACADEMY
+        </span>
+
+
+        <h1>
+
+            تعلم HTML
+
+            <br>
+
+            <span>
+                من الصفر إلى الاحتراف 🔥
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            منصة تعليمية متكاملة تساعدك على تعلم لغة HTML
+            خطوة بخطوة من البداية حتى بناء صفحات ويب احترافية.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <a
+                href="Lessons/lesson1.html"
+                class="btn"
+            >
+                🚀 ابدأ أول درس
+            </a>
+
+
+            <a
+                href="leaderboard.html"
+                class="btn btn-success"
+            >
+                🏆 لوحة المتصدرين
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     FEATURES
+================================================== -->
+
+<section class="container">
+
+
+    <div class="section-title">
+
+
+        <span>
+            ✨ لماذا HTML Master Academy؟
+        </span>
+
+
+        <h2>
+            كل ما تحتاجه لتعلم HTML
+        </h2>
+
+
+        <p>
+            تعلم بطريقة سهلة وتفاعلية وممتعة.
+        </p>
+
+
+    </div>
+
+
+
+    <div class="card-grid">
+
+
+        <!-- FEATURE 1 -->
+
+        <div class="card">
+
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+
+            <h3>
+                20 درسًا
+            </h3>
+
+
+            <p>
+                محتوى مرتب من الأساسيات حتى المواضيع المتقدمة.
+            </p>
+
+
+        </div>
+
+
+
+        <!-- FEATURE 2 -->
+
+        <div class="card">
+
+
+            <div class="feature-icon">
+                📝
+            </div>
+
+
+            <h3>
+                اختبارات تفاعلية
+            </h3>
+
+
+            <p>
+                اختبر نفسك بعد كل درس واعرف مستواك.
+            </p>
+
+
+        </div>
+
+
+
+        <!-- FEATURE 3 -->
+
+        <div class="card">
+
+
+            <div class="feature-icon">
+                💻
+            </div>
+
+
+            <h3>
+                أمثلة برمجية
+            </h3>
+
+
+            <p>
+                شاهد الأكواد وجربها وتعلم من خلال التطبيق.
+            </p>
+
+
+        </div>
+
+
+
+        <!-- FEATURE 4 -->
+
+        <div class="card">
+
+
+            <div class="feature-icon">
+                🏆
+            </div>
+
+
+            <h3>
+                لوحة المتصدرين
+            </h3>
+
+
+            <p>
+                تابع نتائجك وتقدمك وتنافس مع الآخرين.
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     LESSONS
+================================================== -->
+
+<section class="container">
+
+
+    <div class="section-title">
+
+
+        <span>
+            📖 مسار التعلم
+        </span>
+
+
+        <h2>
+            ابدأ رحلتك في HTML
+        </h2>
+
+
+    </div>
+
+
+
+    <div class="card lesson-start-card">
+
+
+        <div>
+
+
+            <span class="lesson-number">
+                الدرس الأول
+            </span>
+
+
+            <h2>
+                مقدمة في HTML 🚀
+            </h2>
+
+
+            <p>
+
+                تعرف على HTML وكيف تعمل صفحات الويب
+                وتتعلم أول كود لك.
+
+            </p>
+
+
+        </div>
+
+
+        <a
+            href="Lessons/lesson1.html"
+            class="btn"
+        >
+            دخول الدرس الأول →
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     FINAL EXAM
+================================================== -->
+
+<section class="container">
+
+
+    <div class="card exam-card">
+
+
+        <div class="feature-icon">
+            🎓
+        </div>
+
+
+        <h2>
+            جاهز للامتحان النهائي؟
+        </h2>
+
+
+        <p>
+
+            بعد إنهاء الدروس العشرين يمكنك دخول
+            الامتحان النهائي واختبار مهاراتك.
+
+        </p>
+
+
+        <a
+            href="final-exam.html"
+            class="btn btn-success"
+        >
+            🎓 دخول الامتحان النهائي
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+
+    <div class="container">
+
+
+        <h2>
+            HTML Master Academy 🚀
+        </h2>
+
+
+        <p>
+            تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.
+        </p>
+
+
+        <p>
+            © 2026 HTML Master Academy
+        </p>
+
+
+    </div>
+
+
+</footer>
+
+
+</body>
+
+</html>
+```

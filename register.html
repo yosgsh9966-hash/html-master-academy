@@ -1,0 +1,340 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="إنشاء حساب جديد في HTML Master Academy"
+    >
+
+    <title>
+        إنشاء حساب | HTML Master Academy 🚀
+    </title>
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- JavaScript -->
+
+    <script
+        src="js/script.js"
+        defer
+    ></script>
+
+    <script
+        src="js/theme-toggle.js"
+        defer
+    ></script>
+
+    <!-- Firebase Auth -->
+
+    <script
+        type="module"
+        src="js/auth.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="navbar">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            🚀 HTML Master Academy
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                🏠 الرئيسية
+            </a>
+
+            <a href="login.html">
+                🔐 تسجيل الدخول
+            </a>
+
+        </nav>
+
+
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+        >
+            🌙
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================================
+         REGISTER
+    ================================================== -->
+
+    <main class="auth-container">
+
+        <section class="card auth-card">
+
+
+            <!-- TITLE -->
+
+            <div class="section-title">
+
+                <span class="badge">
+                    🚀 HTML MASTER ACADEMY
+                </span>
+
+                <h1>
+                    إنشاء حساب جديد
+                </h1>
+
+                <p>
+                    أنشئ حسابك وابدأ رحلة تعلم HTML.
+                </p>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="authMessage"
+                class="auth-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- REGISTER FORM -->
+
+            <form
+                id="registerForm"
+                autocomplete="on"
+            >
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        👤 الاسم
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="اكتب اسمك"
+                        autocomplete="name"
+                        minlength="2"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        📧 البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        🔒 كلمة المرور
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="اكتب كلمة المرور"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggleRegisterPassword"
+                            class="show-password"
+                            aria-label="إظهار كلمة المرور"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        🔐 تأكيد كلمة المرور
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="أعد كتابة كلمة المرور"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggleConfirmPassword"
+                            class="show-password"
+                            aria-label="إظهار كلمة المرور"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="agreeTerms"
+                            required
+                        >
+
+                        أوافق على شروط استخدام المنصة.
+
+                    </label>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary auth-button"
+                    id="registerButton"
+                >
+                    🚀 إنشاء الحساب
+                </button>
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <div class="auth-footer">
+
+                <p>
+                    لديك حساب بالفعل؟
+                </p>
+
+                <a
+                    href="login.html"
+                    class="btn btn-secondary"
+                >
+                    🔐 تسجيل الدخول
+                </a>
+
+            </div>
+
+
+            <!-- HOME -->
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← العودة إلى الصفحة الرئيسية
+            </a>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <h3>
+                🚀 HTML Master Academy
+            </h3>
+
+            <p>
+                تعلم HTML خطوة بخطوة من الصفر حتى الاحتراف.
+            </p>
+
+            <p>
+                © 2026 HTML Master Academy
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+```
